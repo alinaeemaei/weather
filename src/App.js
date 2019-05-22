@@ -4,6 +4,9 @@ import AutoCompleteText from "./component/AutoCompleteText";
 
 class App extends Component {
   state = {
+    City: "",
+    country: "",
+    condition: "",
     temp: "",
     humidity: "",
     image: ""
@@ -16,6 +19,14 @@ class App extends Component {
     );
     const data = await api.json();
     console.log(data);
+    this.setState({
+      City: data.location.name,
+      country: data.location.country,
+      temp: data.current.temp_c,
+      humidity: data.current.humidity,
+      image: data.current.condition.icon,
+      condition: data.current.condition.text
+    });
   };
   render() {
     return (
@@ -25,6 +36,13 @@ class App extends Component {
             <input type="text" placeholder="enter City" />
             <button>search</button>
           </form>
+
+          <h5>city: {this.state.City}</h5>
+          <h5>country: {this.state.country}</h5>
+          <h5>condition: {this.state.condition}</h5>
+          <h5>temp: {this.state.temp}</h5>
+          <h5>humidity: {this.state.humidity}</h5>
+          <img src={this.state.image} alt="" />
         </div>
       </div>
     );
