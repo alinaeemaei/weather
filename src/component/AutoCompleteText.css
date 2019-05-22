@@ -1,0 +1,26 @@
+.AutoCompleteText {
+  width: 100%;
+  border: 1px gray;
+  box-shadow: 0 0 0 1px #aaaa;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: gray;
+  text-decoration: none;
+  border-radius: 10px;
+  padding: 5px;
+  border: none;
+}
+
+.AutoCompleteText input {
+  width: 100%;
+  border: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: gray;
+  border: none;
+}
+
+.AutoCompleteText ul {
+  list-style-type: none;
+  text-align: left;
+}
