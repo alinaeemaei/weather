@@ -4,7 +4,6 @@ import "./App.css";
 class App extends Component {
   state = {
     newCity: "",
-    newcityFullname: "",
     City: "",
     country: "",
     condition: "",
@@ -20,7 +19,7 @@ class App extends Component {
     if (this.state.newCity !== "") {
       const api = await fetch(
         `http://api.apixu.com/v1/current.json?key=1652ea732ca848b7bd6100429192205&q=${
-          this.state.newcityFullname
+          this.state.newCity
         }`
       );
       const data = await api.json();
@@ -31,7 +30,8 @@ class App extends Component {
         temp: data.current.temp_c,
         humidity: data.current.humidity,
         image: data.current.condition.icon,
-        condition: data.current.condition.text
+        condition: data.current.condition.text,
+        text: ""
       });
     }
   };
@@ -42,22 +42,17 @@ class App extends Component {
       `http://api.apixu.com/v1/search.json?key=1652ea732ca848b7bd6100429192205&q=${search}`
     );
     var data = await url.json();
-    this.setState({ text: search });
     if (search.length >= 3) {
       this.setState({
         searchValu: data,
-        newcityFullname: search,
         newCity: search
       });
     }
   };
 
-  changeLocationHandler(event) {
-    console.log(event.target.value);
-    this.setState({
-      newCity: event.target.value,
-      textBoxValue: event.target.value
-    });
+  onChangeHandler(event) {
+    this.setState({ text: event.target.value });
+    this.autoCompleteText(event);
   }
 
   SearchListHandle(event) {
@@ -66,7 +61,7 @@ class App extends Component {
       text: event.target.getAttribute("data-itemid"),
       searchValu: []
     });
-    console.log(this.state.newcityFullname);
+    this.getWeatherInfo(event);
   }
 
   render() {
@@ -78,7 +73,7 @@ class App extends Component {
             <form onSubmit={this.getWeatherInfo}>
               <input
                 value={text}
-                onChange={this.autoCompleteText.bind(this)}
+                onChange={this.onChangeHandler.bind(this)}
                 type="text"
                 placeholder="enter City"
               />
