@@ -4,13 +4,15 @@ import "./App.css";
 class App extends Component {
   state = {
     newCity: "",
-    City: "tehran",
+    newcityFullname: "",
+    City: "",
     country: "",
     condition: "",
     temp: "",
     humidity: "",
     image: "",
-    searchValu: []
+    searchValu: [],
+    text: ""
   };
 
   getWeatherInfo = async e => {
@@ -18,7 +20,7 @@ class App extends Component {
     if (this.state.newCity !== "") {
       const api = await fetch(
         `http://api.apixu.com/v1/current.json?key=1652ea732ca848b7bd6100429192205&q=${
-          this.state.newCity
+          this.state.newcityFullname
         }`
       );
       const data = await api.json();
@@ -40,31 +42,56 @@ class App extends Component {
       `http://api.apixu.com/v1/search.json?key=1652ea732ca848b7bd6100429192205&q=${search}`
     );
     var data = await url.json();
+    this.setState({ text: search });
     if (search.length >= 3) {
       this.setState({
-        searchValu: data
+        searchValu: data,
+        newcityFullname: search,
+        newCity: search
       });
     }
-    console.log(this.state.searchValu);
   };
 
   changeLocationHandler(event) {
     console.log(event.target.value);
     this.setState({
-      newCity: event.target.value
+      newCity: event.target.value,
+      textBoxValue: event.target.value
     });
   }
+
+  SearchListHandle(event) {
+    this.setState({
+      newcityFullname: event.target.getAttribute("data-itemid"),
+      text: event.target.getAttribute("data-itemid"),
+      searchValu: []
+    });
+    console.log(this.state.newcityFullname);
+  }
+
   render() {
+    const { text } = this.state;
     return (
       <div>
         <div>
-          <form
-            onSubmit={this.getWeatherInfo}
-            onChange={this.autoCompleteText.bind(this)}
-          >
-            <input type="text" placeholder="enter City" />
-            <button>search</button>
-          </form>
+          <div className="autoComplete">
+            <form onSubmit={this.getWeatherInfo}>
+              <input
+                value={text}
+                onChange={this.autoCompleteText.bind(this)}
+                type="text"
+                placeholder="enter City"
+              />
+              <button>search</button>
+            </form>
+            <ul onClick={this.SearchListHandle.bind(this)}>
+              {this.state.searchValu.map(item => (
+                <li key={item.id} data-itemid={item.name}>
+                  {item.name}
+                </li>
+              ))}
+            </ul>
+          </div>
 
           <h5>city: {this.state.City}</h5>
           <h5>country: {this.state.country}</h5>
@@ -73,13 +100,7 @@ class App extends Component {
           <h5>humidity: {this.state.humidity}</h5>
           <img src={this.state.image} alt="" />
         </div>
-        <div>
-          <ul>
-            {this.state.searchValu.map(item => (
-              <li key={item.id}>{item.name}</li>
-            ))}
-          </ul>
-        </div>
+        <div />
       </div>
     );
   }
