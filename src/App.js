@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import "./App.css";
+import SearchForm from "./component/searchForm/SearchForm";
+import LocationDetail from "./component/LocationDetail/LocationDetail";
 
 class App extends Component {
   state = {
+    placeholder: "enter city",
     newCity: "",
     City: "",
     country: "",
@@ -14,6 +17,11 @@ class App extends Component {
     text: ""
   };
 
+  onChangeHandler(event) {
+    this.setState({ text: event.target.value });
+    this.autoCompleteText(event);
+  }
+
   getWeatherInfo = async e => {
     e.preventDefault();
     if (this.state.newCity !== "") {
@@ -23,7 +31,6 @@ class App extends Component {
         }`
       );
       const data = await api.json();
-
       this.setState({
         City: data.location.name,
         country: data.location.country,
@@ -31,7 +38,8 @@ class App extends Component {
         humidity: data.current.humidity,
         image: data.current.condition.icon,
         condition: data.current.condition.text,
-        text: ""
+        text: "",
+        placeholder: this.state.text
       });
     }
   };
@@ -50,11 +58,6 @@ class App extends Component {
     }
   };
 
-  onChangeHandler(event) {
-    this.setState({ text: event.target.value });
-    this.autoCompleteText(event);
-  }
-
   SearchListHandle(event) {
     this.setState({
       newcityFullname: event.target.getAttribute("data-itemid"),
@@ -65,36 +68,15 @@ class App extends Component {
   }
 
   render() {
-    const { text } = this.state;
     return (
       <div>
-        <div>
-          <div className="autoComplete">
-            <form onSubmit={this.getWeatherInfo}>
-              <input
-                value={text}
-                onChange={this.onChangeHandler.bind(this)}
-                type="text"
-                placeholder="enter City"
-              />
-              <button>search</button>
-            </form>
-            <ul onClick={this.SearchListHandle.bind(this)}>
-              {this.state.searchValu.map(item => (
-                <li key={item.id} data-itemid={item.name}>
-                  {item.name}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <h5>city: {this.state.City}</h5>
-          <h5>country: {this.state.country}</h5>
-          <h5>condition: {this.state.con}</h5>
-          <h5>temp: {this.state.temp}</h5>
-          <h5>humidity: {this.state.humidity}</h5>
-          <img src={this.state.image} alt="" />
-        </div>
+        <SearchForm
+          state={this.state}
+          getWeatherInfo={this.getWeatherInfo.bind(this)}
+          onChangeHandler={this.onChangeHandler.bind(this)}
+          SearchListHandle={this.SearchListHandle.bind(this)}
+        />
+        <LocationDetail state={this.state} />
         <div />
       </div>
     );

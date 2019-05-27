@@ -1,0 +1,8 @@
+.locationDetail {
+  display: flex;
+  flex-direction: column;
+}
+.locationDetail img {
+  height: 80px;
+  width: 80px;
+}
