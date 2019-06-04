@@ -1,0 +1,94 @@
+.body {
+  background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+  display: grid;
+  height: 120vh;
+  grid-gap: 10px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-auto-columns: minmax(400px, auto);
+  grid-template-areas:
+    "base base"
+    "forcast detail";
+}
+
+.base {
+  padding: 4%;
+  display: flex;
+  flex-direction: column;
+  grid-area: base;
+  border: 1px #ccc solid;
+}
+
+.location {
+  flex: 1;
+  order: 1;
+  font-size: 1rem;
+}
+.temp {
+  flex: 1;
+  order: 2;
+  margin: 0%;
+}
+.tempc {
+  margin: 0%;
+  font-size: 4rem;
+  margin-top: 5%;
+}
+.discription {
+  font-size: 1rem;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+.forcast {
+  display: flex;
+  flex-direction: column;
+  border: 2px #fff;
+  background: #1114;
+  grid-area: forcast;
+}
+.ul {
+  padding: 0%;
+  list-style: none;
+  padding-inline-start: 0%;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+.forcast-list {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.date {
+  list-style: none;
+  flex: 1;
+}
+.icon {
+  flex: 1fr;
+  width: 30px;
+}
+.list-gap {
+  background: #777;
+  height: 1px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.detail {
+  display: flex;
+  flex-direction: column;
+  padding: 4%;
+  border: 1px #ccc solid;
+  background: #1114;
+  grid-area: detail;
+}
+
+.currentIcon {
+  flex: 0.8;
+
+  padding: 5px;
+}
