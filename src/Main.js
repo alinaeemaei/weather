@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./component/Navbar/Navbar";
-import App from "./App";
+import ChangeLocation from "./component/ChangeLocation/ChangeLocation";
 import Home from "./component/Home/Home";
 import "./App.css";
 
 class Main extends Component {
-  state = {};
   render() {
     return (
       <Router>
@@ -14,7 +13,7 @@ class Main extends Component {
           <Navbar />
           <Switch>
             <Route path="/" exact component={Home} />
-            <Route path="/name" component={App} />
+            <Route path="/name" component={ChangeLocation} test="gooz" />
           </Switch>
         </div>
       </Router>

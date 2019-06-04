@@ -1,0 +1,15 @@
+.search-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  list-style: none;
+  grid-gap: 5px;
+  width: none;
+  padding: 0%;
+}
+.search-list li {
+  margin: 10px;
+  background: #1117;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px #fffd solid;
+}

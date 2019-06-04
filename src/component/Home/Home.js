@@ -60,28 +60,34 @@ class Home extends Component {
             <p className="discription">{this.state.condition}</p>
           </div>
         </div>
-        <div className="forcast">
-          <p>Forecast</p>
-          <ul className="ul">
-            {this.state.forecastDay.map((item, index) => (
-              <li key={index}>
-                <div className="forcast-list">
-                  <p className="date">{item.date}</p>
-                  <img className="icon" src={item.day.condition.icon} alt="" />
-                </div>
-                <p className="list-gap" />
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="detail">
-          <img className="currentIcon" src={this.state.image} alt="icon" />
-          <p className="list-gap" />
-          <p>Feels like : {this.state.feelslike} c</p>
-          <p className="list-gap" />
-          <p>humidity : {this.state.humidity} %</p>
-          <p className="list-gap" />
-          <p>Wind speed : {this.state.feelslike} kmh</p>
+        <div className="forcast-detail">
+          <div className="forcast">
+            <p>Forecast</p>
+            <ul className="ul">
+              {this.state.forecastDay.slice(0, 5).map((item, index) => (
+                <li key={index}>
+                  <div className="forcast-list">
+                    <p className="date">{item.date}</p>
+                    <img
+                      className="icon"
+                      src={item.day.condition.icon}
+                      alt=""
+                    />
+                  </div>
+                  <p className="list-gap" />
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="detail">
+            <img className="currentIcon" src={this.state.image} alt="icon" />
+            <p className="list-gap" />
+            <p>Feels like : {this.state.feelslike} c</p>
+            <p className="list-gap" />
+            <p>humidity : {this.state.humidity} %</p>
+            <p className="list-gap" />
+            <p>Wind speed : {this.state.feelslike} kmh</p>
+          </div>
         </div>
       </div>
     );
