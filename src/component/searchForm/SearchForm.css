@@ -1,10 +1,13 @@
 .autoComplete {
   position: relative;
-  display: inline-block;
-  left: 0;
+  width: 100%;
+  top: 0;
 }
 .autoComplete form {
   display: flex;
+
+  justify-content: center;
+  align-content: center;
 }
 .autoComplete input {
   border: 1px solid transparent;
@@ -16,11 +19,13 @@
 .autoComplete input[type="text"] {
   background-color: #f1f1f1;
   width: 100%;
+  flex: 4;
 }
 
 .autoComplete input[type="submit"] {
   background-color: DodgerBlue;
   color: #fff;
+  flex: 1;
 }
 .autoComplete ul {
   padding-inline-start: 0;

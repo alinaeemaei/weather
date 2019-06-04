@@ -1,8 +1,65 @@
 .locationDetail {
-  display: flex;
-  flex-direction: column;
+  width: 400px;
+  height: 200px;
+  background: #3332;
+  padding: 40px;
+  margin: 5px;
+  border-radius: 40px;
+  border: 1px solid black;
+  display: grid;
+  grid-template-rows: 70% 30%;
 }
-.locationDetail img {
-  height: 80px;
-  width: 80px;
+.details {
+  display: grid;
+  grid-template-columns: 30% 70%;
+}
+.detail {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+.location {
+  font-size: 0.8rem;
+}
+.condition {
+  color: blue;
+  font-size: 1.2rem;
+  margin-top: 20px;
+}
+.temp {
+  justify-self: end;
+  font-size: 5rem;
+  margin: 10px;
+  padding-right: 20px;
+}
+
+.locationDetail p {
+  margin: 2px;
+}
+.forcast {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: inherit;
+  width: 100%;
+  height: 100%;
+}
+.forcast div {
+  width: auto;
+  min-width: 50px;
+}
+.forcast img {
+  width: 65px;
+}
+.forcast p {
+  font-size: 0.6rem;
+}
+.forcastUl {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: inherit;
+  width: 100%;
+  height: 100%;
+  list-style: none;
+  font-size: 0.7rem;
+  padding: 5px;
+  margin: 0;
 }

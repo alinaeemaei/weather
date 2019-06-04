@@ -15,8 +15,8 @@ const SearchForm = props => {
       </form>
 
       <ul onClick={props.SearchListHandle}>
-        {props.state.searchValu.map(item => (
-          <li key={item.id} data-itemid={item.name}>
+        {props.state.searchValu.slice(0, 4).map((item, index) => (
+          <li key={index} data-itemid={item.name}>
             {item.name}
           </li>
         ))}

@@ -1,16 +1,34 @@
-import React from "react";
+import React, { Component } from "react";
 import "./LocationDetail.css";
 
-const LocationDetail = props => {
-  return (
-    <div className="locationDetail">
-      <h5>city: {props.state.City}</h5>
-      <h5>country: {props.state.country}</h5>
-      <h5>condition: {props.state.con}</h5>
-      <h5>temp: {props.state.temp}</h5>
-      <h5>humidity: {props.state.humidity}</h5>
-      <img src={props.state.image} alt="" />
-    </div>
-  );
-};
+class LocationDetail extends Component {
+  render() {
+    return (
+      <div className="locationDetail">
+        <div className="details">
+          <div className="detail">
+            <p className="location">
+              {this.props.state.City},{this.props.state.country}
+            </p>
+            <p className="condition">{this.props.state.condition}</p>
+          </div>
+          <div className="temp">
+            <p>{this.props.state.temp}</p>
+          </div>
+        </div>
+        <div className="forcast">
+          <ul className="forcastUl">
+            {this.props.forcast.map((item, index) => (
+              <li key={index}>
+                <p>{item.date}</p>
+                <img src={item.day.condition.icon} alt="" />
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    );
+  }
+}
+
 export default LocationDetail;
