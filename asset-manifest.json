@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/weather/static/css/main.d15c4dc0.chunk.css",
-    "main.js": "/weather/static/js/main.b824f0a2.chunk.js",
-    "main.js.map": "/weather/static/js/main.b824f0a2.chunk.js.map",
+    "main.js": "/weather/static/js/main.d5222607.chunk.js",
+    "main.js.map": "/weather/static/js/main.d5222607.chunk.js.map",
     "runtime~main.js": "/weather/static/js/runtime~main.6cff1e35.js",
     "runtime~main.js.map": "/weather/static/js/runtime~main.6cff1e35.js.map",
     "static/js/2.dd6c02c8.chunk.js": "/weather/static/js/2.dd6c02c8.chunk.js",
     "static/js/2.dd6c02c8.chunk.js.map": "/weather/static/js/2.dd6c02c8.chunk.js.map",
     "index.html": "/weather/index.html",
-    "precache-manifest.19ab6885f7454200e43bddf499bc5204.js": "/weather/precache-manifest.19ab6885f7454200e43bddf499bc5204.js",
+    "precache-manifest.410affb677a064b05297947d1b84a3f5.js": "/weather/precache-manifest.410affb677a064b05297947d1b84a3f5.js",
     "service-worker.js": "/weather/service-worker.js",
     "static/css/main.d15c4dc0.chunk.css.map": "/weather/static/css/main.d15c4dc0.chunk.css.map"
   }
