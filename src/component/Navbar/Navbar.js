@@ -8,11 +8,11 @@ function Navbar() {
   };
   return (
     <nav>
-      <Link to="/" className="link">
+      <Link to="/home/:name" className="link">
         <h2>Weather</h2>
       </Link>
       <ul className="nav-link">
-        <Link to="/name" className="link">
+        <Link to="/weather/name" className="link">
           <li>Change Location</li>
         </Link>
       </ul>

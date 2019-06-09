@@ -1,7 +1,12 @@
 .autoComplete {
   position: relative;
   width: 100%;
-  top: 0;
+  top: 78px;
+  left: 0%;
+  right: 0%;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
 }
 .autoComplete form {
   display: flex;

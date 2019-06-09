@@ -3,8 +3,14 @@ nav {
   justify-content: space-around;
   align-items: center;
   min-height: 8vh;
-  background: rgba(0, 0, 0, 0.329);
+  background: rgba(0, 0, 0, 0.795);
   color: white;
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  right: 0%;
+  width: 100%;
+  z-index: 2;
 }
 .nav-link {
   width: 20%;

@@ -3,6 +3,7 @@ body {
   display: grid;
   grid-row-gap: 20px;
   grid-template-rows: (1fr, 1fr);
+  margin-top: 20vh;
 }
 
 .base {

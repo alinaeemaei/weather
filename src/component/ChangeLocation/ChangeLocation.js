@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SearchForm from "../searchForm/SearchForm";
 import "./ChangeLocation.css";
+import { Link } from "react-router-dom";
 
 class ChangeLocation extends Component {
   state = {
@@ -64,7 +65,8 @@ class ChangeLocation extends Component {
             city: data.location.name,
             country: data.location.country,
             temp: data.current.temp_c,
-            icon: data.current.condition.icon
+            icon: data.current.condition.icon,
+            fullname: this.state.text
           }
         ]
       });
@@ -86,12 +88,14 @@ class ChangeLocation extends Component {
         <div>
           <ul className="search-list">
             {this.state.list.map((item, index) => (
-              <li key={index}>
-                <p>{item.city}</p>
-                <p>{item.country}</p>
-                <p>{item.temp}</p>
-                <img src={item.icon} />
-              </li>
+              <Link to={`/home/${item.fullname}`}>
+                <li key={index}>
+                  <p>{item.city}</p>
+                  <p>{item.country}</p>
+                  <p>{item.temp}</p>
+                  <img src={item.icon} />
+                </li>
+              </Link>
             ))}
           </ul>
         </div>

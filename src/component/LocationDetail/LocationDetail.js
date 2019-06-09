@@ -1,10 +1,16 @@
 import React, { Component } from "react";
 import "./LocationDetail.css";
+import { Link } from "react-router-dom";
+import { from } from "rxjs";
+import GetAPI from "../Home/GetAPI";
 
 class LocationDetail extends Component {
   render() {
     return (
       <div className="locationDetail">
+        <h1>
+          <GetAPI />
+        </h1>
         <div className="details">
           <div className="detail">
             <p className="location">

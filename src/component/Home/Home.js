@@ -21,12 +21,12 @@ class Home extends Component {
     wind: ""
   };
 
-  getWeatherInfo = async e => {
-    e.preventDefault();
-
+  componentDidMount = async e => {
     if (this.state.newCity !== "") {
       const api = await fetch(
-        `https://api.apixu.com/v1/forecast.json?key=1652ea732ca848b7bd6100429192205&q=tehran&days=6`
+        `https://api.apixu.com/v1/forecast.json?key=1652ea732ca848b7bd6100429192205&q=${
+          this.props.name
+        }&days=6`
       );
       const data = await api.json();
       this.setState({
@@ -44,13 +44,13 @@ class Home extends Component {
         forecastDay: data.forecast.forecastday,
         wind: data.current.wind_kph
       });
-      console.log(this.state.forecastDay);
+      console.log(this.props.name);
     }
   };
 
   render() {
     return (
-      <div className="body" onClick={this.getWeatherInfo.bind(this)}>
+      <div className="body">
         <div className="base">
           <div className="location">
             {this.state.City},{this.state.country}
